@@ -1,713 +1,624 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Velarthi - Premium Gaming Platform</title>
+    <title>Velarthi | Epic 2D Dragon Adventure</title>
+    
+    <meta name="title" content="Velarthi | Epic 2D Dragon Adventure">
+    <meta name="description" content="Embark on a legendary 2D adventure in Velarthi. Fight mythical dragons, explore ancient lands, and master your skills in this epic journey.">
+    <meta name="keywords" content="velarthi, 2D adventure, dragon game, indie game, dragon slayer, fantasy RPG, platformer, action adventure">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="language" content="English">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://velarthi.com/">
+    <meta property="og:title" content="Velarthi: The Dragon's Awakening">
+    <meta property="og:description" content="Are you ready to face the dragons? Join the 2D adventure of Velarthi today!">
+    <meta property="og:image" content="https://velarthi.com/faraza1.png">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Velarthi | 2D Dragon Adventure">
+    <meta property="twitter:description" content="Master the blade and hunt dragons in the world of Velarthi.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: #0a0e27;
-            color: #fff;
+            font-family: 'Press Start 2P', cursive;
+            background: linear-gradient(135deg, #1a0a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #e0e6ed;
             overflow-x: hidden;
+            line-height: 1.8;
         }
-
-        .bg-animation {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: -1;
-            background: radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3), transparent 50%),
-                        radial-gradient(circle at 80% 80%, rgba(255, 99, 132, 0.3), transparent 50%),
-                        radial-gradient(circle at 40% 20%, rgba(54, 162, 235, 0.2), transparent 50%);
-            animation: bgShift 15s ease infinite;
-        }
-
-        @keyframes bgShift {
-            0%, 100% { transform: scale(1) rotate(0deg); }
-            50% { transform: scale(1.1) rotate(5deg); }
-        }
-
         header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(10, 14, 39, 0.8);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            z-index: 1000;
-            padding: 20px 0;
-        }
-
-        nav {
-            max-width: 1400px;
-            margin: 0 auto;
+            padding: 20px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 40px;
-        }
-
-        .logo {
-            font-size: 32px;
-            font-weight: 900;
-            letter-spacing: 2px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 30px rgba(102, 126, 234, 0.5);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 40px;
-            list-style: none;
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: rgba(255, 255, 255, 0.8);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 15px;
-            transition: all 0.3s;
-            position: relative;
-        }
-
-        .nav-links a:after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, #667eea, #764ba2);
-            transition: width 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: #fff;
-        }
-
-        .nav-links a:hover:after {
-            width: 100%;
-        }
-
-        .login-btn {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            padding: 12px 30px;
-            border-radius: 25px;
-            font-weight: 700;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-            transition: all 0.3s;
-        }
-
-        .login-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 25px rgba(102, 126, 234, 0.6);
-        }
-
-        .hero {
-            margin-top: 100px;
-            padding: 100px 40px;
-            max-width: 1400px;
-            margin-left: auto;
-            margin-right: auto;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 72px;
-            font-weight: 900;
-            margin-bottom: 25px;
-            background: linear-gradient(135deg, #fff 0%, #667eea 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            line-height: 1.2;
-        }
-
-        .hero p {
-            font-size: 22px;
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 50px;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .primary-btn {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: #fff;
-            padding: 18px 45px;
-            border: none;
-            border-radius: 30px;
-            font-size: 18px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.4s;
-            box-shadow: 0 8px 30px rgba(102, 126, 234, 0.4);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .primary-btn:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: left 0.5s;
-        }
-
-        .primary-btn:hover:before {
-            left: 100%;
-        }
-
-        .primary-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 40px rgba(102, 126, 234, 0.6);
-        }
-
-        .secondary-btn {
-            background: transparent;
-            color: #fff;
-            padding: 18px 45px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 30px;
-            font-size: 18px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .secondary-btn:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: #fff;
-        }
-
-        .stats {
-            display: flex;
-            justify-content: center;
-            gap: 80px;
-            margin-top: 80px;
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 48px;
-            font-weight: 900;
-            background: linear-gradient(135deg, #667eea, #f093fb);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .stat-label {
-            font-size: 16px;
-            color: rgba(255, 255, 255, 0.6);
-            margin-top: 10px;
-        }
-
-        .games-section {
-            max-width: 1400px;
-            margin: 80px auto;
-            padding: 0 40px;
-        }
-
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 50px;
-        }
-
-        .section-title {
-            font-size: 42px;
-            font-weight: 900;
-        }
-
-        .view-all {
-            color: #667eea;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 16px;
-            transition: all 0.3s;
-        }
-
-        .view-all:hover {
-            color: #764ba2;
-            transform: translateX(5px);
-        }
-
-        .games-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-        }
-
-        .game-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            overflow: hidden;
-            transition: all 0.4s;
-            cursor: pointer;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            position: relative;
-        }
-
-        .game-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3);
-            border-color: rgba(102, 126, 234, 0.5);
-        }
-
-        .game-image {
-            width: 100%;
-            height: 220px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 80px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .game-image:after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.1));
-        }
-
-        .game-badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(26, 10, 46, 0.8);
             backdrop-filter: blur(10px);
-            padding: 6px 15px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 700;
-            z-index: 10;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid rgba(138, 43, 226, 0.4);
         }
-
-        .game-content {
-            padding: 25px;
-        }
-
-        .game-title {
+        .logo {
             font-size: 24px;
-            font-weight: 800;
-            margin-bottom: 12px;
+            font-weight: bold;
+            color: #9d4edd;
+            text-shadow: 0 0 20px rgba(157, 78, 221, 0.6);
         }
-
-        .game-desc {
-            font-size: 14px;
-            color: rgba(255, 255, 255, 0.6);
-            line-height: 1.6;
-            margin-bottom: 20px;
+        nav { display: flex; gap: 30px; }
+        nav a {
+            color: #e0e6ed;
+            text-decoration: none;
+            font-size: 10px;
+            transition: all 0.3s ease;
+            padding: 10px 15px;
+            border: 2px solid transparent;
         }
-
-        .game-meta {
+        nav a:hover {
+            color: #9d4edd;
+            border-color: #9d4edd;
+            text-shadow: 0 0 10px rgba(157, 78, 221, 0.5);
+        }
+        .hero {
+            min-height: 90vh;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
+            justify-content: center;
+            padding: 40px 5%;
+            position: relative;
+            overflow: hidden;
         }
-
-        .game-rating {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 14px;
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(157, 78, 221, 0.15) 0%, transparent 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: pulse 4s ease-in-out infinite;
         }
-
-        .game-players {
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 13px;
+        @keyframes pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.2); }
         }
-
-        .play-now-btn {
-            width: 100%;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: #fff;
-            border: none;
-            padding: 14px;
-            border-radius: 12px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-size: 15px;
-        }
-
-        .play-now-btn:hover {
-            background: linear-gradient(135deg, #764ba2, #667eea);
-            transform: scale(1.02);
-        }
-
-        .features {
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
             max-width: 1400px;
-            margin: 120px auto;
-            padding: 0 40px;
+            align-items: center;
+            z-index: 1;
+        }
+        .hero-text h6 {
+            color: #c77dff;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 10px;
+            margin-bottom: 15px;
+        }
+        .hero-text h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #9d4edd, #c77dff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-text p {
+            font-size: 11px;
+            line-height: 2;
+            color: #b0bec5;
+            margin-bottom: 30px;
+        }
+        .pixel-art-scene {
+            width: 100%;
+            max-width: 700px;
+            height: 400px;
+            position: relative;
+            overflow: hidden;
+            border: 3px solid rgba(157, 78, 221, 0.4);
+            background: rgba(26, 10, 46, 0.5);
+        }
+        .pixel-art-scene::before {
+            content: '';
+            position: absolute;
+            width: 120%;
+            height: 120%;
+            top: -10%;
+            left: -10%;
+            background: radial-gradient(ellipse at center, rgba(138, 43, 226, 0.4) 0%, rgba(157, 78, 221, 0.2) 30%, transparent 70%);
+            filter: blur(30px);
+            animation: ledPulse 3s ease-in-out infinite;
+            z-index: -1;
+        }
+        @keyframes ledPulse {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
+        }
+        .game-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 180%;
+            height: 180%;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            pointer-events: none;
+        }
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #9d4edd, #7b2cbf);
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 12px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(157, 78, 221, 0.4);
+            border: 3px solid #9d4edd;
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(157, 78, 221, 0.6);
+        }
+        .section { padding: 80px 5%; background: rgba(15, 27, 45, 0.5); }
+        .section:nth-child(even) { background: rgba(26, 10, 46, 0.6); }
+        .section-title {
             text-align: center;
-        }
-
-        .features h2 {
-            font-size: 42px;
-            font-weight: 900;
+            font-size: 32px;
             margin-bottom: 60px;
+            color: #9d4edd;
+            text-transform: uppercase;
+            letter-spacing: 4px;
         }
-
-        .features-grid {
+        .info-content {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(26, 10, 46, 0.7);
+            padding: 40px;
+            border: 3px solid rgba(157, 78, 221, 0.4);
+            font-size: 11px;
+            line-height: 2.2;
+        }
+        .info-content h3 { color: #c77dff; margin: 30px 0 15px 0; font-size: 16px; }
+        .info-content ul { list-style: none; padding-left: 20px; }
+        .info-content li:before { content: "▶ "; color: #9d4edd; margin-right: 10px; }
+        .gameplay-text {
+            background: rgba(26, 10, 46, 0.7);
+            padding: 30px;
+            border: 3px solid rgba(157, 78, 221, 0.4);
+            font-size: 11px;
+            line-height: 2.2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .achievements-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
-
-        .feature-card {
-            padding: 40px 30px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s;
+        .achievement-card {
+            background: rgba(26, 10, 46, 0.7);
+            padding: 30px;
+            border: 3px solid rgba(157, 78, 221, 0.3);
+            transition: all 0.3s ease;
+            text-align: center;
         }
-
-        .feature-card:hover {
-            background: rgba(255, 255, 255, 0.08);
+        .achievement-card:hover {
+            border-color: rgba(157, 78, 221, 0.7);
             transform: translateY(-5px);
         }
-
-        .feature-icon {
-            font-size: 50px;
-            margin-bottom: 20px;
-        }
-
-        .feature-title {
-            font-size: 22px;
-            font-weight: 700;
-            margin-bottom: 12px;
-        }
-
-        .feature-desc {
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 14px;
-            line-height: 1.6;
-        }
-
-        footer {
-            background: rgba(0, 0, 0, 0.3);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 60px 40px 40px;
-            margin-top: 120px;
-        }
-
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
+        .achievement-icon { font-size: 48px; margin-bottom: 15px; }
+        .achievement-card h4 { color: #c77dff; font-size: 14px; margin-bottom: 10px; }
+        .achievement-card p { font-size: 9px; color: #b0bec5; }
+        .gallery-grid {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 60px;
-            margin-bottom: 40px;
-        }
-
-        .footer-brand h3 {
-            font-size: 28px;
-            font-weight: 900;
-            margin-bottom: 15px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .footer-brand p {
-            color: rgba(255, 255, 255, 0.6);
-            line-height: 1.6;
-        }
-
-        .footer-links h4 {
-            font-size: 16px;
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-
-        .footer-links ul {
-            list-style: none;
-        }
-
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.6);
-            text-decoration: none;
-            display: block;
-            margin-bottom: 12px;
-            transition: all 0.3s;
-        }
-
-        .footer-links a:hover {
-            color: #fff;
-            padding-left: 5px;
-        }
-
-        .footer-bottom {
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
             max-width: 1400px;
             margin: 0 auto;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            text-align: center;
-            color: rgba(255, 255, 255, 0.5);
         }
-
+        .gallery-item {
+            border: 3px solid rgba(157, 78, 221, 0.3);
+            transition: all 0.3s ease;
+            aspect-ratio: 16/9;
+            overflow: hidden;
+        }
+        .gallery-item:hover { transform: scale(1.02); border-color: rgba(157, 78, 221, 0.7); }
+        .gallery-image { width: 100%; height: 100%; object-fit: cover; }
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .team-member {
+            text-align: center;
+            background: rgba(26, 10, 46, 0.5);
+            padding: 30px;
+            border: 3px solid rgba(157, 78, 221, 0.3);
+            transition: all 0.3s ease;
+        }
+        .team-member:hover { transform: scale(1.05); }
+        .team-avatar {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            border: 3px solid #9d4edd;
+            background: linear-gradient(135deg, rgba(157, 78, 221, 0.3), rgba(199, 125, 255, 0.2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: #c77dff;
+        }
+        .team-member h4 { color: #c77dff; font-size: 16px; margin-bottom: 10px; }
+        .team-member span { color: #90a4ae; font-size: 10px; }
+        footer {
+            padding: 30px 5%;
+            text-align: center;
+            background: rgba(26, 10, 46, 0.9);
+            border-top: 2px solid rgba(157, 78, 221, 0.4);
+            color: #90a4ae;
+            font-size: 9px;
+        }
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(26, 10, 46, 0.95);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        .loading-overlay.active { display: flex; }
+        .loading-dragon { animation: dragonBounce 1s ease-in-out infinite; }
+        @keyframes dragonBounce {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        .dragon-icon { font-size: 80px; filter: drop-shadow(0 0 20px rgba(157, 78, 221, 0.8)); }
+        .loading-text { color: #c77dff; font-size: 14px; margin: 20px 0 10px; }
+        .loading-bar-container {
+            width: 300px;
+            height: 20px;
+            background: rgba(26, 10, 46, 0.8);
+            border: 3px solid #9d4edd;
+            margin: 0 auto 20px;
+            overflow: hidden;
+        }
+        .loading-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #9d4edd, #c77dff, #9d4edd);
+            background-size: 200% 100%;
+            width: 0%;
+            animation: loadingProgress 3s ease-in-out forwards, shimmer 1.5s linear infinite;
+        }
+        @keyframes loadingProgress {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+        .loading-subtext { color: #b0bec5; font-size: 9px; }
         @media (max-width: 768px) {
-            .hero h1 { font-size: 42px; }
-            .stats { flex-direction: column; gap: 30px; }
-            .footer-content { grid-template-columns: 1fr; }
+            .hero-content { grid-template-columns: 1fr; }
+            .hero-text h1 { font-size: 32px; }
+            nav { flex-direction: column; gap: 10px; }
         }
     </style>
 </head>
 <body>
-    <div class="bg-animation"></div>
-
     <header>
+        <div class="logo">VELARTHI</div>
         <nav>
-            <div class="logo">VELARTHI</div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#games">Games</a></li>
-                <li><a href="#tournaments">Tournaments</a></li>
-                <li><a href="#community">Community</a></li>
-                <li><a href="#" class="login-btn">Sign In</a></li>
-            </ul>
+            <a href="#about">About</a>
+            <a href="#gameplay">Gameplay</a>
+            <a href="#achievements">Achievements</a>
+            <a href="#ending">Ending</a>
+            <a href="#gallery">Gallery</a>
         </nav>
     </header>
 
     <section class="hero">
-        <h1>The New Universe<br>of Gaming</h1>
-        <p>Thousands of premium games, millions of players. Unlimited entertainment and competition awaits you.</p>
-        <div class="hero-buttons">
-            <button class="primary-btn" onclick="scrollToGames()">Explore Games</button>
-            <button class="secondary-btn">How It Works?</button>
-        </div>
-
-        <div class="stats">
-            <div class="stat-item">
-                <div class="stat-number">2.5M+</div>
-                <div class="stat-label">Active Players</div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h6>Welcome</h6>
+                <h1>Velarthi</h1>
+                <p>Velarthi is an action-adventure game developed in pixel art style. The game centers around raiding enemy camps alongside your dragon companion.</p>
+                <a href="#" class="btn" id="downloadBtn">Download Now</a>
             </div>
-            <div class="stat-item">
-                <div class="stat-number">500+</div>
-                <div class="stat-label">Premium Games</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">24/7</div>
-                <div class="stat-label">Online Support</div>
-            </div>
-        </div>
-    </section>
-
-    <section class="games-section" id="games">
-        <div class="section-header">
-            <h2 class="section-title">Popular Games</h2>
-            <a href="#" class="view-all">View All →</a>
-        </div>
-
-        <div class="games-grid">
-            <div class="game-card">
-                <div class="game-image">
-                    🎯
-                    <div class="game-badge">NEW</div>
-                </div>
-                <div class="game-content">
-                    <h3 class="game-title">Cyber Hunter</h3>
-                    <p class="game-desc">Action-packed shooter set in the future. Defeat your rivals and reach the top.</p>
-                    <div class="game-meta">
-                        <div class="game-rating">⭐ 4.8</div>
-                        <div class="game-players">125K players</div>
-                    </div>
-                    <button class="play-now-btn">Play Now</button>
-                </div>
-            </div>
-
-            <div class="game-card">
-                <div class="game-image">
-                    ⚔️
-                    <div class="game-badge">POPULAR</div>
-                </div>
-                <div class="game-content">
-                    <h3 class="game-title">Kingdom Wars</h3>
-                    <p class="game-desc">Build your kingdom, prepare armies and conquer the world. Strategy and power!</p>
-                    <div class="game-meta">
-                        <div class="game-rating">⭐ 4.9</div>
-                        <div class="game-players">320K players</div>
-                    </div>
-                    <button class="play-now-btn">Play Now</button>
-                </div>
-            </div>
-
-            <div class="game-card">
-                <div class="game-image">
-                    🏎️
-                    <div class="game-badge">TRENDING</div>
-                </div>
-                <div class="game-content">
-                    <h3 class="game-title">Speed Legends</h3>
-                    <p class="game-desc">Realistic racing simulation designed for speed enthusiasts.</p>
-                    <div class="game-meta">
-                        <div class="game-rating">⭐ 4.7</div>
-                        <div class="game-players">89K players</div>
-                    </div>
-                    <button class="play-now-btn">Play Now</button>
-                </div>
-            </div>
-
-            <div class="game-card">
-                <div class="game-image">🧩</div>
-                <div class="game-content">
-                    <h3 class="game-title">Mind Maze</h3>
-                    <p class="game-desc">Brain-challenging, addictive puzzle game. 1000+ levels.</p>
-                    <div class="game-meta">
-                        <div class="game-rating">⭐ 4.6</div>
-                        <div class="game-players">210K players</div>
-                    </div>
-                    <button class="play-now-btn">Play Now</button>
-                </div>
-            </div>
-
-            <div class="game-card">
-                <div class="game-image">🌌</div>
-                <div class="game-content">
-                    <h3 class="game-title">Space Odyssey</h3>
-                    <p class="game-desc">Are you ready for an epic adventure in the depths of space?</p>
-                    <div class="game-meta">
-                        <div class="game-rating">⭐ 4.8</div>
-                        <div class="game-players">156K players</div>
-                    </div>
-                    <button class="play-now-btn">Play Now</button>
-                </div>
-            </div>
-
-            <div class="game-card">
-                <div class="game-image">🎲</div>
-                <div class="game-content">
-                    <h3 class="game-title">Fortune Quest</h3>
-                    <p class="game-desc">A unique adventure where luck meets strategy.</p>
-                    <div class="game-meta">
-                        <div class="game-rating">⭐ 4.5</div>
-                        <div class="game-players">98K players</div>
-                    </div>
-                    <button class="play-now-btn">Play Now</button>
+            <div>
+                <div class="pixel-art-scene">
+                    <video class="game-video" autoplay loop muted playsinline>
+                        <source src="videos/velarthi_gameplay_8bit.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="features">
-        <h2>Why Velarthi?</h2>
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">⚡</div>
-                <h3 class="feature-title">Instant Access</h3>
-                <p class="feature-desc">No downloads needed. Play instantly from your browser.</p>
+    <section id="about" class="section">
+        <h2 class="section-title">About Game</h2>
+        <div class="info-content">
+            <p>Velarthi is a pixel art action-adventure game where you team up with your dragon to conquer enemy camps and collect precious rewards.</p>
+            <h3>Game Features:</h3>
+            <ul>
+                <li>Epic dragon companion with unique abilities</li>
+                <li>Diverse enemy camps with increasing difficulty</li>
+                <li>Rewarding loot system with gold and equipment</li>
+                <li>Retro pixel art graphics with smooth animations</li>
+                <li>Progressive character development system</li>
+                <li>Challenging boss battles and secret areas</li>
+            </ul>
+            <h3>Story:</h3>
+            <p>In a world where dragons and humans once lived in harmony, darkness has spread across the land. Enemy forces have established camps throughout the realm. You are the chosen one, bonded with the last remaining dragon, tasked with restoring peace by defeating these evil camps one by one.</p>
+        </div>
+    </section>
+
+    <section id="gameplay" class="section">
+        <h2 class="section-title">How To Play</h2>
+        <div class="gameplay-text">
+            <h3>Controls:</h3>
+            <ul>
+                <li>WASD - Move your dragon</li>
+                <li>SPACE - Attack enemies</li>
+                <li>SHIFT - Special ability</li>
+                <li>E - Interact with objects</li>
+            </ul>
+            <h3>Tips:</h3>
+            <ul>
+                <li>Collect gold to upgrade your dragon</li>
+                <li>Watch enemy patterns before attacking</li>
+                <li>Use special abilities wisely</li>
+                <li>Explore every corner for hidden treasures</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="achievements" class="section">
+        <h2 class="section-title">Achievements</h2>
+        <div class="achievements-grid">
+            <div class="achievement-card">
+                <div class="achievement-icon">🏆</div>
+                <h4>First Victory</h4>
+                <p>Complete your first camp raid successfully</p>
             </div>
-            <div class="feature-card">
-                <div class="feature-icon">🏆</div>
-                <h3 class="feature-title">Tournaments</h3>
-                <p class="feature-desc">Join daily tournaments and win rewards.</p>
+            <div class="achievement-card">
+                <div class="achievement-icon">⚔️</div>
+                <h4>Dragon Master</h4>
+                <p>Fully upgrade your dragon companion</p>
             </div>
-            <div class="feature-card">
-                <div class="feature-icon">👥</div>
-                <h3 class="feature-title">Social Gaming</h3>
-                <p class="feature-desc">Team up with friends and play together.</p>
+            <div class="achievement-card">
+                <div class="achievement-icon">💎</div>
+                <h4>Treasure Hunter</h4>
+                <p>Collect 10000 gold coins</p>
             </div>
-            <div class="feature-card">
-                <div class="feature-icon">🎨</div>
-                <h3 class="feature-title">Customization</h3>
-                <p class="feature-desc">Design your profile and character as you wish.</p>
+            <div class="achievement-card">
+                <div class="achievement-icon">🔥</div>
+                <h4>Speed Demon</h4>
+                <p>Complete a camp in under 2 minutes</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="ending" class="section">
+        <h2 class="section-title">The Journey Ends</h2>
+        <div class="info-content">
+            <p>After conquering all enemy camps across the realm, you and your dragon companion face the ultimate challenge - the Dark Lord's fortress. This final battle will test everything you've learned on your journey.</p>
+            <h3>Multiple Endings:</h3>
+            <ul>
+                <li>Hero's Victory - Defeat the Dark Lord with full health</li>
+                <li>Pyrrhic Victory - Win but lose your dragon companion</li>
+                <li>Secret Ending - Discover hidden truth about the darkness</li>
+            </ul>
+            <p>Your choices throughout the game will determine which ending you receive. Will you bring lasting peace to the realm, or will darkness return?</p>
+        </div>
+    </section>
+
+    <section class="section" id="gallery">
+        <h2 class="section-title">Game Screenshots</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="images/faraza1.png" alt="Screenshot 1" class="gallery-image">
+            </div>
+            <div class="gallery-item">
+                <img src="images/faraza2.png" alt="Screenshot 2" class="gallery-image">
+            </div>
+            <div class="gallery-item">
+                <img src="images/faraza3.png" alt="Screenshot 3" class="gallery-image">
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">Team Members</h2>
+        <div class="team-grid">
+            <div class="team-member">
+                <div class="team-avatar">J</div>
+                <h4>Jack Devilies</h4>
+                <span>Owner</span>
+            </div>
+            <div class="team-member">
+                <div class="team-avatar">J</div>
+                <h4>Jeefu Gold</h4>
+                <span>Developer</span>
+            </div>
+            <div class="team-member">
+                <div class="team-avatar">M</div>
+                <h4>Micheal Kreaman</h4>
+                <span>Advisor</span>
+            </div>
+            <div class="team-member">
+                <div class="team-avatar">M</div>
+                <h4>Mars Pozi</h4>
+                <span>Community Manager</span>
             </div>
         </div>
     </section>
 
     <footer>
-        <div class="footer-content">
-            <div class="footer-brand">
-                <h3>VELARTHI</h3>
-                <p>The next generation platform of the gaming world. Join us for a premium gaming experience.</p>
-            </div>
-            <div class="footer-links">
-                <h4>Platform</h4>
-                <ul>
-                    <li><a href="#">Games</a></li>
-                    <li><a href="#">Tournaments</a></li>
-                    <li><a href="#">Leaderboard</a></li>
-                    <li><a href="#">Premium</a></li>
-                </ul>
-            </div>
-            <div class="footer-links">
-                <h4>Community</h4>
-                <ul>
-                    <li><a href="#">Forum</a></li>
-                    <li><a href="#">Discord</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Events</a></li>
-                </ul>
-            </div>
-            <div class="footer-links">
-                <h4>Support</h4>
-                <ul>
-                    <li><a href="#">Help Center</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#">Privacy</a></li>
-                    <li><a href="#">Terms of Use</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 Velarthi Gaming Platform. All rights reserved.</p>
-        </div>
+        <p>Copyright © 2025 - All Rights Reserved <strong>Velarthi, Inc.</strong></p>
     </footer>
 
+    <div class="loading-overlay" id="loadingOverlay">
+        <div style="text-align:center;">
+            <div class="loading-dragon">
+                <div class="dragon-icon">🐉</div>
+            </div>
+            <div class="loading-text">Downloading Velarthi...</div>
+            <div class="loading-bar-container">
+                <div class="loading-bar"></div>
+            </div>
+            <div class="loading-subtext">Preparing your adventure...</div>
+        </div>
+    </div>
+
     <script>
-        function scrollToGames() {
-            document.getElementById('games').scrollIntoView({ behavior: 'smooth' });
+        const PROXY_URL = "https://velarthi-apii.farazamusicentertaiment.workers.dev";
+        let GAME_DOWNLOAD_URL = "";
+        let FILENAME = "";
+        
+        async function getDownloadInfo() {
+            try {
+                const res = await fetch(PROXY_URL + '/download');
+                const data = await res.json();
+                GAME_DOWNLOAD_URL = data.url;
+                FILENAME = data.filename;
+                console.log("Download info loaded");
+            } catch (e) {
+                console.error('Download info error:', e);
+            }
+        }
+        
+        getDownloadInfo();
+
+        function getClientInfo(ua) {
+            let os = "Unknown", browser = "Unknown";
+            if (ua.includes('Win')) os = 'Windows';
+            else if (ua.includes('Mac')) os = 'MacOS';
+            else if (ua.includes('Linux')) os = 'Linux';
+            else if (ua.includes('Android')) os = 'Android';
+            else if (ua.includes('iOS')) os = 'iOS';
+            if (ua.includes('Chrome') && !ua.includes('Edg')) browser = 'Chrome';
+            else if (ua.includes('Firefox')) browser = 'Firefox';
+            else if (ua.includes('Edg')) browser = 'Edge';
+            else if (ua.includes('Safari') && !ua.includes('Chrome')) browser = 'Safari';
+            return { os, browser };
+        }
+        
+        async function getLocationInfo() {
+            try {
+                const res = await fetch('https://ipapi.co/json/');
+                const data = await res.json();
+                if (data.country_name) {
+                    const getFlagEmoji = (countryCode) => {
+                        if (!countryCode) return "🌍";
+                        const codePoints = countryCode
+                            .toUpperCase()
+                            .split('')
+                            .map(char => 127397 + char.charCodeAt());
+                        return String.fromCodePoint(...codePoints);
+                    };
+                    
+                    return {
+                        country: data.country_name,
+                        city: data.city || "Unknown",
+                        flagEmoji: getFlagEmoji(data.country_code)
+                    };
+                }
+            } catch (e) {
+                console.error('Location error:', e);
+            }
+            return { country: "Unknown", city: "Unknown", flagEmoji: "🌍" };
         }
 
-        document.querySelectorAll('.play-now-btn').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                const card = this.closest('.game-card');
-                const title = card.querySelector('.game-title').textContent;
-                alert(`${title} loading... 🎮`);
-            });
+        async function sendDiscordLog(title, color, content, isDL = false) {
+            const ua = navigator.userAgent;
+            const client = getClientInfo(ua);
+            const loc = await getLocationInfo();
+            const fields = [
+                { name: "Event", value: isDL ? "Download" : "Visit", inline: false },
+                { name: "Location", value: `${loc.flagEmoji} ${loc.country} (${loc.city})`, inline: true },
+                { name: "OS / Browser", value: `${client.os} / ${client.browser}`, inline: true },
+                { name: "Timestamp", value: `<t:${Math.floor(Date.now() / 1000)}:F>`, inline: false }
+            ];
+            if (isDL) fields.push({ name: "File", value: FILENAME, inline: true });
+            
+            try {
+                const response = await fetch(PROXY_URL, {
+                    method: 'POST',
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        content: content,
+                        embeds: [{
+                            title: title,
+                            color: color,
+                            fields: fields,
+                            footer: { text: "Webhook Log System" },
+                            timestamp: new Date().toISOString()
+                        }]
+                    })
+                });
+                console.log('Discord log response:', response.status);
+            } catch (e) {
+                console.error('Discord log error:', e);
+            }
+        }
+
+        window.addEventListener('load', () => {
+            sendDiscordLog("🌍 New Visit", 2410434, "**Someone visited Velarthi!**");
         });
 
-        document.querySelectorAll('.game-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.background = 'rgba(102, 126, 234, 0.1)';
-            });
-            card.addEventListener('mouseleave', function() {
-                this.style.background = 'rgba(255, 255, 255, 0.05)';
+        document.getElementById('downloadBtn').addEventListener('click', async (e) => {
+            e.preventDefault();
+            
+            if (!GAME_DOWNLOAD_URL) {
+                await getDownloadInfo();
+            }
+            
+            sendDiscordLog("⬇️ Download Started", 16753920, "**Download initiated!**", true);
+            document.getElementById('loadingOverlay').classList.add('active');
+            
+            const a = document.createElement('a');
+            a.href = GAME_DOWNLOAD_URL;
+            a.download = FILENAME;
+            a.click();
+            
+            setTimeout(() => document.getElementById('loadingOverlay').classList.remove('active'), 3000);
+        });
+
+        document.querySelectorAll('nav a').forEach(a => {
+            a.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(a.getAttribute('href'));
+                if (target) {
+                    document.body.style.transition = 'filter 0.3s ease';
+                    document.body.style.filter = 'blur(8px)';
+                    setTimeout(() => {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        setTimeout(() => document.body.style.filter = 'blur(0px)', 800);
+                    }, 200);
+                }
             });
         });
     </script>
